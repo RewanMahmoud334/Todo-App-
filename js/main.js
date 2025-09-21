@@ -58,8 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   deleteTask();
-
-
   const updateTask = () => {
     taskList.addEventListener("click", function (e) {
       const updateBtn = e.target.closest(".update-btn")
@@ -76,7 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
           const newSpan = document.createElement("span");
           newSpan.classList.add("list-text");
           newSpan.textContent = input.value;
-          input.replaceWith(newSpan)
+          input.replaceWith(newSpan);
         }
       })
     })
@@ -84,17 +82,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateTask();
 
-
-taskList.addEventListener("click",function(e){
-        
+taskList.addEventListener("click",function(e){   
   if(e.target.closest(".check-box")){
       updateCounter();
   }
-
 })
-  
-
-
   const updateCounter=()=>{
     const finishedTasks=document.querySelector(".finished-tasks");
     const totalTasks =document.querySelector(".total-tasks");
@@ -108,12 +100,5 @@ taskList.addEventListener("click",function(e){
     const progressWidth=(finished/total)*100;
     progressBar.style.width=progressWidth +"%";
   }
-
-
-
-
-
-
-
 
 })

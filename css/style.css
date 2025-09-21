@@ -29,7 +29,11 @@ background-color: rgba(255,194 , 209, 0.3);
 color: #dbdbdb;
 padding: 5px 17px;
 margin-right: 10px;
+}
 
+#taskInput:focus-visible{
+ outline: 0;
+  border: 2px solid rgba(255, 255, 255, 0.18) !important;
 }
 
 #taskInput::placeholder{
@@ -72,7 +76,7 @@ padding: 5px 17px;
 display: flex;
 justify-content: space-between;
 align-items: center;
-margin-top: 20px;
+margin-top: 10px;
 }
 
 
@@ -141,6 +145,11 @@ padding: 5px 10px;
 margin-right: 10px;
 }
 
+.input-update:focus-visible{
+  outline: 0;
+   border: 2px solid rgba(255, 255, 255, 0.18) !important;
+}
+
 .counter-container{
   border: 2px solid rgba(255, 255, 255, 0.18);
   border-radius: 20px;
@@ -149,8 +158,8 @@ margin-right: 10px;
 
 
 .counter{
-  width:80px ;
-  height: 80px;
+  width:70px ;
+  height: 70px;
   border-radius: 50%;
   background-color: #ff6f91;
 
