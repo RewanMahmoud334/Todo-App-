@@ -78,7 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteTask = () => {
     taskList.addEventListener("click", function (e) {
       const deleteBtn = e.target.closest(".delete-btn")
-      deleteBtn.closest("li").remove();
+      const Li= deleteBtn.closest("li")
+     const text = Li.querySelector(".list-text").textContent
+     Li.remove();
+     const index = listText.indexOf(text)
+     if(index!==-1){
+            listText.splice(index,1)
+            localStorage.setItem("listText",JSON.stringify(listText))
+     }
       toggleEmptyState();
       updateCounter();
 
@@ -94,15 +101,23 @@ document.addEventListener("DOMContentLoaded", () => {
       const input = document.createElement("input");
       input.type = "text";
       input.classList.add("input-update")
-      input.value = span.textContent;
+      const oldText=span.textContent;
+      input.value = oldText;
       span.replaceWith(input);
       input.focus();
       input.addEventListener("keyup", function (e) {
         if (e.key === "Enter") {
           const newSpan = document.createElement("span");
           newSpan.classList.add("list-text");
-          newSpan.textContent = input.value;
+          const newText=input.value;
+          newSpan.textContent = newText;
           input.replaceWith(newSpan);
+
+          const index= listText.indexOf(oldText);
+          if(index!==-1){
+            listText[index]=newText;
+            localStorage.setItem("listText",JSON.stringify(listText))
+          }
         }
       })
 
