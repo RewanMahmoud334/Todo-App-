@@ -78,8 +78,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const deleteTask = () => {
     taskList.addEventListener("click", function (e) {
       const deleteBtn = e.target.closest(".delete-btn")
+      if(!deleteBtn){
+        return;
+      }
       const Li= deleteBtn.closest("li")
      const text = Li.querySelector(".list-text").textContent
+     if(!text){
+      return
+     }
      Li.remove();
      const index = listText.indexOf(text)
      if(index!==-1){
@@ -96,6 +102,9 @@ document.addEventListener("DOMContentLoaded", () => {
   const updateTask = () => {
     taskList.addEventListener("click", function (e) {
       const updateBtn = e.target.closest(".update-btn")
+      if(!updateBtn){
+        return;
+      }
       const li = updateBtn.closest("li");
       const span = li.querySelector(".list-text");
       const input = document.createElement("input");
