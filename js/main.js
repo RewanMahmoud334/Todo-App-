@@ -6,22 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const emptyImage = document.querySelector(".empty-image");
 
 
-
+  let listText=JSON.parse(localStorage.getItem("listText"))|| []
   const toggleEmptyState = () => {
     emptyImage.style.display = taskList.children.length === 0 ? 'block' : "none";
   }
 
   const addTask = (event) => {
     event.preventDefault();
-    const listText = taskInput.value.trim();
     if (!listText) {
       return;
     }
+     listText.push(taskInput.value.trim()) ;
+   localStorage.setItem("listText",JSON.stringify(listText))
     const Li = document.createElement("li");
     Li.innerHTML = `
   <div class="d-flex justify-content-center align-items-center">
     <input type="checkbox" class="check-box me-2">
-<span class="list-text">${listText}</span>
+<span class="list-text">${taskInput.value.trim()}</span>
   </div>
 
 <div class="buttons-container">
@@ -37,6 +38,31 @@ document.addEventListener("DOMContentLoaded", () => {
     updateCounter()
 
   }
+
+
+  const render=()=>{
+     let listConatiner="";
+    for(let i=0;i<listText.length;i++){
+      listConatiner+=`
+      <li>
+            <div class="d-flex justify-content-center align-items-center">
+    <input type="checkbox" class="check-box me-2">
+<span class="list-text">${listText[i]}</span>
+  </div>
+
+<div class="buttons-container">
+   <button id="updateBtn" class="update-btn"><i class="fa-solid fa-pen "></i></button>
+  <button id="deleteBtn" class="delete-btn"><i class="fa-solid fa-trash "></i></button>
+</div>
+      
+      </li>
+
+      `
+    }
+
+      taskList.innerHTML=listConatiner
+
+   }
 
   addTaskInput.addEventListener("click", addTask);
   taskInput.addEventListener("keydown", (e) => {
@@ -99,6 +125,11 @@ taskList.addEventListener("click",function(e){
     const reminder=total-finished;
     const progressWidth=(finished/total)*100;
     progressBar.style.width=progressWidth +"%";
+    if(tasks.length==0){
+        progressBar.style.width=0 +"%";
+    }
   }
+
+  render()
 
 })

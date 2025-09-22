@@ -125,12 +125,12 @@ font-size: 12px;
   font-size: 12px;
 }
 
-#updateBtn{
+.update-btn{
   background-color: #ffbf00;
   margin-right: 10px;
 }
 
-#deleteBtn{
+.delete-btn{
   background-color: #ff6f91;
 }
 
