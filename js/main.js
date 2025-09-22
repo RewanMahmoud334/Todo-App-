@@ -41,9 +41,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
   const render=()=>{
-     let listConatiner="";
+     let listContainer="";
     for(let i=0;i<listText.length;i++){
-      listConatiner+=`
+      listContainer+=`
       <li>
             <div class="d-flex justify-content-center align-items-center">
     <input type="checkbox" class="check-box me-2">
@@ -60,7 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
       `
     }
 
-      taskList.innerHTML=listConatiner
+      taskList.innerHTML=listContainer;
+      updateCounter()
+      toggleEmptyState()
 
    }
 
@@ -103,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
           input.replaceWith(newSpan);
         }
       })
+
+     
     })
   }
 
@@ -128,6 +132,7 @@ taskList.addEventListener("click",function(e){
     if(tasks.length==0){
         progressBar.style.width=0 +"%";
     }
+
   }
 
   render()
